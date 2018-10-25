@@ -34,7 +34,13 @@ namespace PushOver
             {
                 app.UseDeveloperExceptionPage();
             }
-
+                     app.UseCors(o =>
+            {
+                o.AllowAnyHeader();
+                o.AllowAnyMethod();
+                o.AllowAnyOrigin();
+                o.AllowCredentials();
+            });
             app.UseMvc();
         }
     }
