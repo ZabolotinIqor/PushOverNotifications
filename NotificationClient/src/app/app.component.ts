@@ -20,7 +20,15 @@ export class AppComponent {
 
   onClick(user: NotificationDto) {
 
-    this.http.post('http://localhost:63721/api/notify', user);
+    this.http.post('http://localhost:63721/api/notify', {
+      USER_KEY: user.USER_KEY,
+      message: user.message
+    }, { headers: new HttpHeaders().append('Content-Type', 'application/json') }).subscribe(
+     next => {},
+     error => {
+       console.log(error);
+     } 
+    );
   }
 
 }
